@@ -1,0 +1,93 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: ghostwhite;
+    height: 100vh;
+
+}
+.video{
+    width: 100%;
+    margin-top : 123px;
+
+}
+.player{
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+}
+.player:hover .controls{
+    transform:translateY(0);
+}
+
+.controls{
+    display:flex;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    flex-wrap: wrap;
+    background:rgba(0, 0, 0, 0.7);
+    transform: translateY(92%) translateY(-5px);
+    transition: 0.2s;
+}
+.buttons{
+    padding: 10px;
+}
+button{
+    background: none;
+    border:0;
+    outline: 0;
+    cursor: pointer;
+}
+button:before{
+    content: "";
+    background: url("/home/olabjouj/project/MyMediaPlayer/assets/Media/Images/ButtonPlay.png");
+    font-family: "Font Awesome 5 Free";
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    font-size: 28px;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    background-size: 100%;
+
+}
+button.play:before{
+   background: url("/home/olabjouj/project/MyMediaPlayer/assets/Media/Images/ButtonPlay.png");
+   font-family: "Font Awesome 5 Free";
+   width: 30px;
+   height: 30px;
+   display: inline-block;
+   font-size: 28px;
+   color: #fff;
+   -webkit-font-smoothing: antialiased;
+   background-size: 100%;
+}
+
+button.pause:before{
+    content:"";
+    background: url("/home/olabjouj/project/MyMediaPlayer/assets/Media/Images/buttonPause.jpeg");
+    font-family: "Font Awesome 5 Free";
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    font-size: 28px;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    background-size: 100%;
+}
+.orange-bar{
+    height: 10px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: black;
+}
+.orange-juice{
+    height: 10px;
+    background-color:red;
+}
+
+
+
