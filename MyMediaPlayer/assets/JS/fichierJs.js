@@ -1,6 +1,8 @@
 var video = document.querySelector('.video');
 var juice = document.querySelector('.orange-juice');
 var btn = document.getElementById('play-pause');
+var volumeslider = document.getElementsByClassId('volumeslider')
+volumeslider.addEventLIstener("change",setvolume,false)
 
 
 function togglePlayPause() {
@@ -24,3 +26,7 @@ video.addEventListener('timeupdate', function () {
         btn.className = "play";
     }
 });
+
+function setvolume (){
+
+}

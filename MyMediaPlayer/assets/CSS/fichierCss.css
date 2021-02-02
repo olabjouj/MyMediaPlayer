@@ -88,6 +88,9 @@ button.pause:before{
     height: 10px;
     background-color:red;
 }
+input .volumeslider{
+    width : 80px;
+}
 
 
 
