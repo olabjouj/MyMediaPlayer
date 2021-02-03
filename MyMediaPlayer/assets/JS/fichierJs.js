@@ -5,7 +5,11 @@ var volume = document.querySelector('#volume');
 var rwdBtn = document.querySelector('.rwd');
 var fwdBtn = document.querySelector('.fwd');
 var timelabel = document.querySelector(".time");
-var fullscreenbtn = document.getElementById("fullscreenbtn")
+var fullscreenbtn = document.getElementById('fullscreenbtn');
+var mutebtn = document.getElementById("mutebtn");
+var seekslider = document.getElementById("seekslider");
+var curtimetext = document.getElementById("curtimetext");
+var durtimetext = document.getElementById("durtimetext");
 
 
 function togglePlayPause() {
@@ -70,4 +74,45 @@ video.ontimeupdate = function () {
     timelabel.textContent = mediaTime;
 
 };
+fullscreenbtn.addEventListener('click', toggleFullScreen, false)
 
+function toggleFullScreen() {
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.webkitRequestFullScreen) {
+        video.webkitRequestFullScreen();
+    } else if (video.normalize.webkitRequestFullScreen) {
+        video.normalize.webkitRequestFullScreen();
+    }
+}
+
+mutebtn.addEventListener("click", vidmute, false);
+function vidmute() {
+    if (video.muted) {
+        video.muted = false;
+        mutebtn.innerHTML = "Mute";
+    } else {
+        video.muted = true;
+        mutebtn.innerHTML = "Unmute";
+    }
+}
+seekslider.addEventListener("change", videoSeek, false);
+function videoSeek() {
+    var seekto = video.duration * (seekslider.value / 100);
+    video.currentTime = seekto;
+}
+video.addEventListener("timeupdate", seektimeupdate, false);
+function seektimeupdate() {
+    var nt = video.currentTime * (100 / video.duration);
+    seekslider.value = nt;
+    var curmins = Math.floor(video.currentTime / 60);
+    var cursecs = Math.floor(video.currentTime - curmins * 60);
+    var durmins = Math.floor(video.duration / 60);
+    var dursecs = Math.floor(video.duration - durmins * 60);
+    if (cursecs < 10) { cursecs = "0" + cursecs; }
+    if (dursecs < 10) { dursecs = "0" + dursecs; }
+    if (curmins < 10) { curmins = "0" + curmins; }
+    if (durmins < 10) { durmins = "0" + durmins; }
+    curtimetext.innerHTML = curmins + ":" + cursecs;
+    durtimetext.innerHTML = durmins + ":" + dursecs;
+}
